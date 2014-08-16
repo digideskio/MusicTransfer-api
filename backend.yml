@@ -1,0 +1,27 @@
+server:
+  type: simple
+  connector:
+    type: http  # alternatives are http
+    port: 8080  # alternatives are 8080
+  applicationContextPath: /
+
+# Logging settings.
+logging:
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: INFO #DEBUG
+
+  # Logger-specific levels.
+  loggers:
+    # Sets the level for 'com.example.app' to DEBUG.
+    io.catalyze.backend: DEBUG
+    org.jaudiotagger: OFF
+
+  appenders:
+    - type: console
+    - type: file
+      currentLogFilename: ./logs/dropwizard.log
+      archivedLogFilenamePattern: ./logs/dropwizard-%d.log.gz
+      archivedFileCount: 7
+
+files:
+  fileDir: filedir
